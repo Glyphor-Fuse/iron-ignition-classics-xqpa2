@@ -1,25 +1,25 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route as RRDRoute } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+import React from "react";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import ProcessReveal from "./components/ProcessReveal";
+import Features from "./components/Features";
+import Gallery from "./components/Gallery";
+import CtaSection from "./components/CtaSection";
+import Footer from "./components/Footer";
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Routes>
-        <RRDRoute path="/" element={<Index />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <RRDRoute path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+export default function App() {
+  return (
+    <div className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary selection:text-black">
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <ProcessReveal />
+        <Gallery />
+        <CtaSection />
+      </main>
+      <Footer />
+    </div>
+  );
+}
